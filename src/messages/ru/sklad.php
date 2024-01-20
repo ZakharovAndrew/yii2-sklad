@@ -26,6 +26,7 @@ return [
     'Links to pictures' => 'Ссылки на картинки',
     'Product link' => 'Ссылка на товар',
     'Products' => 'Продукты',
+    'Product Lists' => 'Список товаров'
     'Product Categories' => 'Категории товаров',
     'Create Product Category' => 'Добавить категорию товаров',
     'Update Product Category' => 'Изменить категорию товаров',
