@@ -1,0 +1,25 @@
+{
+  "name": "zakharov-andrew/yii2-sklad",
+  "description": "Yii2 Sklad module for maintaining warehouse accounting. Supports adding various products and materials",
+  "type": "yii2-extension",
+  "keywords": ["yii2", "extension", "module", "warehouse", "product", "users", "material", "yii 2"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrew Zakharov",
+      "homepage": "https://github.com/ZakharovAndrew",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ZakharovAndrew\\sklad\\": "src"
+    }
+  },
+  "fxp-asset": {
+    "enabled": false
+  }
+}
