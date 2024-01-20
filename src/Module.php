@@ -21,7 +21,7 @@ class Module extends \yii\base\Module
     /**
      * @var string Module version
      */
-    protected $version = "0.0.1";
+    protected $version = "0.0.6";
 
     /**
      * @var string Alias for module
@@ -70,7 +70,7 @@ class Module extends \yii\base\Module
             'basePath' => '@vendor/zakharov-andrew/yii2-sklad/src/messages',
             'on missingTranslation' => ['app\components\TranslationEventHandler', 'handleMissingTranslation'],
             'fileMap' => [
-                'extension/yii2-sklad/user' => 'sklad.php',
+                'extension/yii2-sklad/sklad' => 'sklad.php',
             ],
         ];
     }
