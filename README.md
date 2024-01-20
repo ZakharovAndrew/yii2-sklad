@@ -58,7 +58,7 @@ Add this to your main configuration's modules array
 
 ```
     'modules' => [
-        'shop' => [
+        'sklad' => [
             'class' => 'ZakharovAndrew\sklad\Module',
             'bootstrapVersion' => 5, // if use bootstrap 5
             'productListTitle' => 'My Producs'
