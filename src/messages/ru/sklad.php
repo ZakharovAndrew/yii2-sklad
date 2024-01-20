@@ -20,6 +20,7 @@ return [
     'Name' => 'Название',
     'Add product' => 'Добавить товар',
     'Category' => 'Категория',
+    'Update' => 'Обновить',
     'Save' => 'Сохранить',
     'Status' => 'Статус',
     'Links to pictures' => 'Ссылки на картинки',
@@ -27,6 +28,7 @@ return [
     'Products' => 'Продукты',
     'Product Categories' => 'Категории товаров',
     'Create Product Category' => 'Добавить категорию товаров',
+    'Update Product Category' => 'Изменить категорию товаров',
     'Product Count' => 'Количество',
     'Images' => 'Картинки',
     'Add products' => 'Добавить товары',
@@ -37,6 +39,7 @@ return [
     'Good products' => 'Хорошие товары',
     'Bad products' => 'Плохие товары',
     'Need products' => 'Нужно товары',
-    'Comments' => 'Комментарий'
+    'Comments' => 'Комментарий',
+    'Date of purchase' => 'Дата покупки'
     
 ];
