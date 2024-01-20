@@ -60,7 +60,6 @@ Add this to your main configuration's modules array
     'modules' => [
         'shop' => [
             'class' => 'ZakharovAndrew\sklad\Module',
-            'catalogTitle' => 'Catalog Title',
             'bootstrapVersion' => 5, // if use bootstrap 5
             'productListTitle' => 'My Producs'
         ],
