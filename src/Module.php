@@ -32,6 +32,11 @@ class Module extends \yii\base\Module
      * @var string version Bootstrap
      */
     public $bootstrapVersion = '';
+
+     /**
+     * @var string header for product list
+     */
+    public $productListTitle = '';
     
     /**
      *
