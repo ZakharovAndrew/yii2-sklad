@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use ZakharovAndrew\sklad\Module;
 
 /** @var yii\web\View $this */
 /** @var app\models\Material $model */
@@ -25,7 +26,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'comments')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Module::t('Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

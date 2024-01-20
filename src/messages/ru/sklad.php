@@ -40,6 +40,12 @@ return [
     'Bad products' => 'Плохие товары',
     'Need products' => 'Нужно товары',
     'Comments' => 'Комментарий',
-    'Date of purchase' => 'Дата покупки'
-    
+    'Date of purchase' => 'Дата покупки',
+    //materials
+    'Materials' => 'Материалы',
+    'Create Material' => 'Добавить материал',
+    'Update Material' => 'Изменить материал',
+    'Material Categories' => 'Категории материалов',
+    'Create Material Category' => 'Создать категорию материалов',
+    'Update Material Category' => 'Изменить категорию материалов',
 ];

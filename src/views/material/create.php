@@ -1,12 +1,13 @@
 <?php
 
 use yii\helpers\Html;
+use ZakharovAndrew\sklad\Module;
 
 /** @var yii\web\View $this */
-/** @var app\models\Material $model */
+/** @var ZakharovAndrew\sklad\models\Material $model */
 
-$this->title = 'Create Material';
-$this->params['breadcrumbs'][] = ['label' => 'Materials', 'url' => ['index']];
+$this->title = Module::t('Create Material');
+$this->params['breadcrumbs'][] = ['label' => Module::t('Materials'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="material-create">

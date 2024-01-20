@@ -5,12 +5,13 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use ZakharovAndrew\sklad\Module;
 
 /** @var yii\web\View $this */
 /** @var app\models\MaterialSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Materials';
+$this->title = Module::t('Materials');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="material-index">
@@ -18,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Material', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Module::t('Create Material'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
