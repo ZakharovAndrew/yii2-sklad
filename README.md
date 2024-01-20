@@ -30,7 +30,7 @@ Subsequently, run
 ./yii migrate/up --migrationPath=@vendor/zakharov-andrew/yii2-sklad/migrations
 ```
 
-in order to create the settings table in your database.
+in order to create the necessary tables in your database.
 
 Or add to console config
 
