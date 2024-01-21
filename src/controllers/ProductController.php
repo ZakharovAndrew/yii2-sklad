@@ -138,6 +138,20 @@ class ProductController extends Controller
             'model' => $model,
         ]);
     }
+    
+    /**
+     * Deletes an existing ProductMaterials model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param int $id ID
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDeleteMaterial($id)
+    {
+        $this->findModelMaterial($id)->delete();
+
+        return $this->redirect(['index']);
+    }
 
     /**
      * Finds the Product model based on its primary key value.
@@ -149,6 +163,15 @@ class ProductController extends Controller
     protected function findModel($id)
     {
         if (($model = Product::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    
+    protected function findModelMaterial($id)
+    {
+        if (($model = ProductMaterials::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

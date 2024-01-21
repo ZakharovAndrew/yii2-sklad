@@ -50,8 +50,13 @@ class ProductMaterials extends \yii\db\ActiveRecord
         ];
     }
     
-    public static function getListByProduct($id)
+    public static function getMaterials($id)
     {
-        
+        return static::find()
+                ->select('material.*, product_materials.id as product_materials_id')
+                ->leftJoin('material', 'material.id = product_materials.material_id')
+                ->where(['product_id' => $id])
+                ->asArray()
+                ->all();
     }
 }
