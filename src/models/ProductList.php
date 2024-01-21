@@ -3,7 +3,7 @@
 namespace ZakharovAndrew\sklad\models;
 
 use Yii;
-use app\modules\sklad\Module;
+use ZakharovAndrew\sklad\Module;
 
 /**
  * This is the model class for table "product_list".

@@ -5,7 +5,7 @@ use ZakharovAndrew\sklad\models\ProductList;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\GridView;
-use app\modules\sklad\Module;
+use ZakharovAndrew\sklad\Module;
 
 /** @var yii\web\View $this */
 /** @var ZakharovAndrew\sklad\models\ProductListSearch $searchModel */

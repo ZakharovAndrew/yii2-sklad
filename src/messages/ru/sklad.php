@@ -29,12 +29,14 @@ return [
     'Product' => 'Товар',
     'Products' => 'Товары',
     'Product Categories' => 'Категории товаров',
+    'Product Count' => 'Количество товаров',
     'Create Product Category' => 'Добавить категорию товаров',
     'Update Product Category' => 'Изменить категорию товаров',
     'Product Count' => 'Количество',
     'Images' => 'Картинки',
     'Add products' => 'Добавить товары',
     'Product Lists' => 'Склад',
+    'Product Materials' => 'Материалы товара',
     'Cost' => 'Цена',
     'Link' => 'Ссылка',
     'Delete' => 'Удалить',
@@ -54,6 +56,7 @@ return [
     'Update Material Category' => 'Изменить категорию материалов',
     'Material Count' => 'Количество материала',
     'Add material' => 'Добавить материал',
+    'Add material to product' => 'Добавить материал к товару',
     
     //Units Of Measure
     'Kilogram' => 'Килограмм',
