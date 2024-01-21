@@ -53,5 +53,17 @@ return [
     'Create Material Category' => 'Создать категорию материалов',
     'Update Material Category' => 'Изменить категорию материалов',
     'Material Count' => 'Количество материала',
-    'Add material' => 'Добавить материал'
+    'Add material' => 'Добавить материал',
+    
+    //Units Of Measure
+    'Kilogram' => 'Килограмм',
+    'Gram' => 'Грамм',
+    'Centimeter' => 'Сантиметр',
+    'Meter' => 'Метр',
+    //Units Of Measure (short)
+    'kg' => 'кг',
+    'g.' => 'г',
+    'cm' => 'см',
+    'm.' => 'м'
+    
 ];

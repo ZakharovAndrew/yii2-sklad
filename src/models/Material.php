@@ -57,6 +57,32 @@ class Material extends \yii\db\ActiveRecord
         ];
     }
     
+    public static function getUnitsOfMeasureList()
+    {
+        return [
+            '1' => Module::t('Kilogram'),
+            '2' => Module::t('Gram'),
+            '3' => Module::t('Centimeter'),
+            '4' => Module::t('Meter'),
+        ];
+    }
+    
+    /**
+     * Get an abbreviated list of units of measurement
+     * 
+     * @return array
+     */
+    public static function getUnitsOfMeasureShortList()
+    {
+        return [
+            '1' => Module::t('kg'),
+            '2' => Module::t('g.'),
+            '3' => Module::t('cm'),
+            '4' => Module::t('m.'),
+        ];
+    }
+
+    
     public static function getList()
     {
         $arr = static::find()
