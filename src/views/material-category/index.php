@@ -1,6 +1,6 @@
 <?php
 
-use app\models\MaterialCategory;
+use ZakharovAndrew\sklad\models\MaterialCategory;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -28,9 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'name',
             [
                 'class' => ActionColumn::className(),

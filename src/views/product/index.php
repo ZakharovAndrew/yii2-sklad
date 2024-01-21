@@ -68,6 +68,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],       
             'link',
             [
+                'attribute' => 'materials',
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return Html::a(Module::t('Add material'), ['add-material', 'id' => $model->id], ['class' => 'btn btn-success']);
+                    //return ProductCategory::getList()[$model->product_category_id] ?? $model->product_category_id;
+                }
+            ],
+            [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Product $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);

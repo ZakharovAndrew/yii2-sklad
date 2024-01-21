@@ -2,6 +2,8 @@
 
 namespace ZakharovAndrew\sklad\models;
 
+use ZakharovAndrew\sklad\Module;
+use \yii\helpers\ArrayHelper;
 use Yii;
 
 /**
@@ -38,7 +40,18 @@ class MaterialCategory extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => Module::t('Name'),
         ];
+    }
+    
+    public static function getList()
+    {
+        $arr = static::find()
+                ->select(['id', 'name'])
+                ->cache(600)
+                ->asArray()
+                ->all();
+        
+        return ArrayHelper::map($arr, 'id', 'name');
     }
 }

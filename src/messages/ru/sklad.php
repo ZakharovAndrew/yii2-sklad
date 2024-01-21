@@ -19,14 +19,15 @@
 return [
     'Name' => 'Название',
     'Add product' => 'Добавить товар',
+    'Update Product' => 'Изменить товар',
     'Category' => 'Категория',
     'Update' => 'Обновить',
     'Save' => 'Сохранить',
     'Status' => 'Статус',
     'Links to pictures' => 'Ссылки на картинки',
     'Product link' => 'Ссылка на товар',
-    'Products' => 'Продукты',
-    'Product Lists' => 'Список товаров',
+    'Product' => 'Товар',
+    'Products' => 'Товары',
     'Product Categories' => 'Категории товаров',
     'Create Product Category' => 'Добавить категорию товаров',
     'Update Product Category' => 'Изменить категорию товаров',
@@ -43,10 +44,14 @@ return [
     'Comments' => 'Комментарий',
     'Date of purchase' => 'Дата покупки',
     //materials
+    'Material' => 'Материал',
     'Materials' => 'Материалы',
     'Create Material' => 'Добавить материал',
     'Update Material' => 'Изменить материал',
+    'Material Category' => 'Категория материалов',
     'Material Categories' => 'Категории материалов',
     'Create Material Category' => 'Создать категорию материалов',
     'Update Material Category' => 'Изменить категорию материалов',
+    'Material Count' => 'Количество материала',
+    'Add material' => 'Добавить материал'
 ];

@@ -4,6 +4,7 @@ namespace ZakharovAndrew\sklad\controllers;
 
 use ZakharovAndrew\sklad\models\Product;
 use ZakharovAndrew\sklad\models\ProductSearch;
+use ZakharovAndrew\sklad\models\ProductMaterials;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -118,6 +119,24 @@ class ProductController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    
+    public function actionAddMaterial($id)
+    {
+        $model = new ProductMaterials();
+        $model->product_id = $id;
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['index']);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('add-material', [
+            'model' => $model,
+        ]);
     }
 
     /**

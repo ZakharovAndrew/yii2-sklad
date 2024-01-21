@@ -1,6 +1,7 @@
 <?php
 
-use app\models\Material;
+use ZakharovAndrew\sklad\models\Material;
+use ZakharovAndrew\sklad\models\MaterialCategory;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -28,12 +29,34 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'name',
-            'images:ntext',
-            'material_category_id',
+            [
+                'attribute' => 'images',
+                'format' => 'raw',
+                //'filter' => HrRecruiting::getGraphList(),
+                'value' => function ($model) {
+                    if (empty($model->images)) {
+                        return '';
+                    }
+                    
+                    $result = [];
+                    $images = explode('|', $model->images);
+                    foreach ($images as $item) {
+                        $result[] = '<img src="'.$item.'" class="img-preview">';
+                    }
+                    
+                    return implode('', $result);
+                    // return HrRecruiting::getGraphList()[$model->graph] ?? $model->graph;
+                }
+            ],
+            [
+                'attribute' => 'material_category_id',
+                //'format' => 'raw',
+                'filter' => MaterialCategory::getList(),
+                'value' => function ($model) {
+                    return MaterialCategory::getList()[$model->material_category_id] ?? $model->material_category_id;
+                }
+            ],
             'cost',
             //'units_of_measure',
             //'comments',

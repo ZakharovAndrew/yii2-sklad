@@ -48,7 +48,8 @@ class Product extends \yii\db\ActiveRecord
             'product_category_id' => Module::t('Category'),
             'good' => Module::t('Good products'),
             'bad' => Module::t('Bad products'),
-            'comments' => Module::t('Comments')
+            'comments' => Module::t('Comments'),
+            'materials' => Module::t('Materials'),
         ];
     }
 }
