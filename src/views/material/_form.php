@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use ZakharovAndrew\sklad\Module;
+use ZakharovAndrew\sklad\models\Material;
+use ZakharovAndrew\sklad\models\MaterialCategory;
 
 /** @var yii\web\View $this */
 /** @var app\models\Material $model */
@@ -17,11 +19,11 @@ use ZakharovAndrew\sklad\Module;
 
     <?= $form->field($model, 'images')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'material_category_id')->textInput() ?>
+    <?= $form->field($model, 'material_category_id')->dropDownList(MaterialCategory::getList(), ['class' => 'form-select']); ?>
 
     <?= $form->field($model, 'cost')->textInput() ?>
 
-    <?= $form->field($model, 'units_of_measure')->textInput() ?>
+    <?= $form->field($model, 'units_of_measure')->dropDownList(Material::getUnitsOfMeasureList(), ['class' => 'form-select']); ?>
 
     <?= $form->field($model, 'comments')->textInput(['maxlength' => true]) ?>
 

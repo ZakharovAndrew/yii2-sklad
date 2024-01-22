@@ -59,10 +59,12 @@ return [
     'Add material to product' => 'Добавить материал к товару',
     
     //Units Of Measure
+    'Units Of Measure' => 'Единицы измерения',
     'Kilogram' => 'Килограмм',
     'Gram' => 'Грамм',
     'Centimeter' => 'Сантиметр',
     'Meter' => 'Метр',
+    'Liter' => 'Литр',
     //Units Of Measure (short)
     'kg' => 'кг',
     'g.' => 'г',

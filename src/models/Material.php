@@ -52,7 +52,7 @@ class Material extends \yii\db\ActiveRecord
             'images' => Module::t('Images'),
             'material_category_id' => Module::t('Material Category'),
             'cost' => Module::t('Cost'),
-            'units_of_measure' => 'Units Of Measure',
+            'units_of_measure' => Module::t('Units Of Measure'),
             'comments' => Module::t('Comments'),
         ];
     }
@@ -64,6 +64,7 @@ class Material extends \yii\db\ActiveRecord
             '2' => Module::t('Gram'),
             '3' => Module::t('Centimeter'),
             '4' => Module::t('Meter'),
+            '5' => Module::t('Liter'),
         ];
     }
     
