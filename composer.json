@@ -12,7 +12,8 @@
     }
   ],
   "require": {
-    "php": ">=8.0"
+    "php": ">=8.0"б
+    "zakharov-andrew/yii2-image-upload-widget": "*"
   },
   "autoload": {
     "psr-4": {
