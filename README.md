@@ -63,9 +63,14 @@ Add this to your main configuration's modules array
             'bootstrapVersion' => 5, // if use bootstrap 5
             'productListTitle' => 'My Producs'
         ],
+        'imageupload' => [
+            'class' => 'ZakharovAndrew\imageupload\Module',
+            'uploadDir' => '/path/to/upload/dir/',
+        ],
         // ...
     ],
 ```
+**Note**: Change the value of **uploadDir** to the directory for uploading images. Uses the [[composer](https://github.com/ZakharovAndrew/yii2-image-upload-widget)]()yii2-image-upload-widget module to upload images.
 
 ## License
 
