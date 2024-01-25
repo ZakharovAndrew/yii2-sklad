@@ -70,7 +70,7 @@ Add this to your main configuration's modules array
         // ...
     ],
 ```
-**Note**: Change the value of **uploadDir** to the directory for uploading images. Uses the [[composer](https://github.com/ZakharovAndrew/yii2-image-upload-widget)]()yii2-image-upload-widget module to upload images.
+**Note**: Change the value of **uploadDir** to the directory for uploading images. Uses the [yii2-image-upload-widget](https://github.com/ZakharovAndrew/yii2-image-upload-widget) module to upload images.
 
 ## License
 
