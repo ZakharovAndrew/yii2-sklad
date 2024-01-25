@@ -21,7 +21,7 @@ class Module extends \yii\base\Module
     /**
      * @var string Module version
      */
-    protected $version = "0.0.1";
+    protected $version = "0.0.8";
 
     /**
      * @var string Alias for module
@@ -37,7 +37,7 @@ class Module extends \yii\base\Module
      * @var string header for product list
      */
     public $productListTitle = '';
-    
+        
     /**
      *
      * @var string source language for translation 

@@ -44,18 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 //'filter' => HrRecruiting::getGraphList(),
                 'value' => function ($model) {
-                    if (empty($model->images)) {
-                        return '';
-                    }
-                    
-                    $result = [];
-                    $images = explode('|', $model->images);
-                    foreach ($images as $item) {
-                        $result[] = '<img src="'.$item.'" class="img-preview">';
-                    }
-                    
-                    return implode('', $result);
-                    // return HrRecruiting::getGraphList()[$model->graph] ?? $model->graph;
+                    return '<img src="'.$model->getFirstImage().'" class="img-preview">';
                 }
             ],
             'name',

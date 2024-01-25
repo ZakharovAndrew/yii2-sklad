@@ -3,6 +3,7 @@
 namespace ZakharovAndrew\sklad\models;
 
 use ZakharovAndrew\sklad\Module;
+use \yii\helpers\ArrayHelper;
 use Yii;
 
 /**
@@ -51,5 +52,33 @@ class Product extends \yii\db\ActiveRecord
             'comments' => Module::t('Comments'),
             'materials' => Module::t('Materials'),
         ];
+    }
+    
+    public static function getList()
+    {
+        $arr = static::find()
+                ->select(['id', 'name'])
+                ->cache(600)
+                ->asArray()
+                ->all();
+        
+        return ArrayHelper::map($arr, 'id', 'name');
+    }
+    
+    /**
+     * Get the first image of a given size
+     * 
+     * @param string $size
+     * @return type
+     */
+    public function getFirstImage($size = 'medium')
+    {
+        if ($this->images == '') {
+            return '/img/no-photo.jpg';
+        }
+        
+        $images = explode(',', $this->images);
+        
+        return '/uploaded_files/'. $images[0].'_img_'.$size.'.jpg';
     }
 }

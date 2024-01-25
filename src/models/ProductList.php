@@ -65,4 +65,21 @@ class ProductList extends \yii\db\ActiveRecord
             'comments' => Module::t('Comments')
         ];
     }
+    
+    /**
+     * Get the first image of a given size
+     * 
+     * @param string $size
+     * @return type
+     */
+    public function getFirstImage($size = 'medium')
+    {
+        if ($this->images == '') {
+            return '/img/no-photo.jpg';
+        }
+        
+        $images = explode(',', $this->images);
+        
+        return '/uploaded_files/'. $images[0].'_img_'.$size.'.jpg';
+    }
 }

@@ -54,17 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'images',
                 'format' => 'raw',
                 'value' => function ($model) {
-                    if (empty($model->images)) {
-                        return '';
-                    }
-                    
-                    $result = [];
-                    $images = explode('|', $model->images);
-                    foreach ($images as $item) {
-                        $result[] = '<img src="'.$item.'" class="img-preview">';
-                    }
-                    
-                    return implode('', $result);
+                    return '<img src="'.$model->getFirstImage().'" class="img-preview">';
                 }
             ],
             'name',
