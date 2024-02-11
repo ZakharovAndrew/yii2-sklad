@@ -1,14 +1,14 @@
 <?php
 
-use ZakharovAndrew\sklad\models\ProductCategory;
+use ZakharovAndrew\shop\models\ProductCategory;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
-use ZakharovAndrew\sklad\Module;
+use ZakharovAndrew\shop\Module;
 
 /** @var yii\web\View $this */
-/** @var ZakharovAndrew\sklad\models\ProductCategorySearch $searchModel */
+/** @var app\models\ProductCategorySearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = Module::t('Product Categories');
@@ -29,7 +29,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             'id',
-            'name',
+            'title',
+            [
+                'attribute' => 'url',
+                'format' => 'raw',
+                'content' => function ($model) {
+                    return '<a href="'.Url::toRoute(['view', 'url' => $model->url]).'">'.$model->url.'</a>';
+                }
+            ],
+            'position',
+            'parent_id',
+            //'description:ntext',
+            //'description_after:ntext',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, ProductCategory $model, $key, $index, $column) {

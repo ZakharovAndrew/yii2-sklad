@@ -1,9 +1,11 @@
 <?php
 
-namespace ZakharovAndrew\sklad\controllers;
+namespace ZakharovAndrew\shop\controllers;
 
-use ZakharovAndrew\sklad\models\ProductCategory;
-use ZakharovAndrew\sklad\models\ProductCategorySearch;
+use ZakharovAndrew\shop\models\Product;
+use ZakharovAndrew\shop\models\ProductCategory;
+use ZakharovAndrew\shop\models\ProductCategorySearch;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -48,15 +50,33 @@ class ProductCategoryController extends Controller
     }
 
     /**
-     * Displays a single ProductCategory model.
-     * @param int $id ID
+     * Displays products by category
+     * @param string $url link to category
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($url)
     {
+        $model = $this->findModelByUrl($url);
+        
+        $query = Product::find()->where(['or', ['category_id' => $model->id], 'category_id IN (SELECT id FROM product_category WHERE parent_id = '.$model->id.')']);
+        //$products =>
+                
+        // делаем копию выборки
+        $countQuery = clone $query;
+        // подключаем класс Pagination, выводим по 10 пунктов на страницу
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 48]);
+        // приводим параметры в ссылке к ЧПУ
+        $pages->pageSizeParam = false;
+        $products = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            //->orderBy(Product::getSortby($sortby))
+            //->orderBy('datetime_at desc')
+            ->all();
+        
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'products' => $products
         ]);
     }
 
@@ -71,7 +91,7 @@ class ProductCategoryController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['index']);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -94,7 +114,7 @@ class ProductCategoryController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'url' => $model->url]);
         }
 
         return $this->render('update', [
@@ -126,6 +146,15 @@ class ProductCategoryController extends Controller
     protected function findModel($id)
     {
         if (($model = ProductCategory::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    
+    protected function findModelByUrl($url)
+    {
+        if (($model = ProductCategory::findOne(['url' => $url])) !== null) {
             return $model;
         }
 

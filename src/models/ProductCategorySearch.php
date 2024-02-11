@@ -1,13 +1,13 @@
 <?php
 
-namespace ZakharovAndrew\sklad\models;
+namespace ZakharovAndrew\shop\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use ZakharovAndrew\sklad\models\ProductCategory;
+use ZakharovAndrew\shop\models\ProductCategory;
 
 /**
- * ProductCategorySearch represents the model behind the search form of `ZakharovAndrew\sklad\models\ProductCategory`.
+ * ProductCategorySearch represents the model behind the search form of `app\models\ProductCategory`.
  */
 class ProductCategorySearch extends ProductCategory
 {
@@ -17,8 +17,8 @@ class ProductCategorySearch extends ProductCategory
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['id', 'position', 'parent_id'], 'integer'],
+            [['title', 'url', 'description', 'description_after'], 'safe'],
         ];
     }
 
@@ -59,9 +59,14 @@ class ProductCategorySearch extends ProductCategory
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'position' => $this->position,
+            'parent_id' => $this->parent_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'url', $this->url])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'description_after', $this->description_after]);
 
         return $dataProvider;
     }

@@ -13,8 +13,8 @@ return [
     'color' => null,
     'interactive' => true,
     'help' => null,
-    'sourcePath' => '@vendor/zakharov-andrew/yii2-sklad/src/',
-    'messagePath' => '@vendor/zakharov-andrew/yii2-sklad/src/messages',
+    'sourcePath' => '@vendor/zakharov-andrew/yii2-shop/src/',
+    'messagePath' => '@vendor/zakharov-andrew/yii2-shop/src/messages',
     'languages' => [
         'ru',
     ],
