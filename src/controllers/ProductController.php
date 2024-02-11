@@ -1,9 +1,10 @@
 <?php
 
-namespace ZakharovAndrew\shop\controllers;
+namespace ZakharovAndrew\sklad\controllers;
 
-use ZakharovAndrew\shop\models\Product;
-use ZakharovAndrew\shop\models\ProductSearch;
+use ZakharovAndrew\sklad\models\Product;
+use ZakharovAndrew\sklad\models\ProductSearch;
+use ZakharovAndrew\sklad\models\ProductMaterials;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -53,19 +54,12 @@ class ProductController extends Controller
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($url)
+    public function actionView($id)
     {
-        $model = $this->findModelByUrl($url);
-        
-        // increase the number of views
-        $model->count_views++;
-        $model->save();
-
         return $this->render('view', [
-            'model' => $model,
+            'model' => $this->findModel($id),
         ]);
     }
-    
 
     /**
      * Creates a new Product model.
@@ -78,7 +72,7 @@ class ProductController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'url' => $model->url]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -96,16 +90,20 @@ class ProductController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $form = '_form')
     {
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'url' => $model->url]);
+            if ($form !== '_form' ) {
+                return $this->redirect(['/sklad/product-list/index']);
+            }
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'form' => $form
         ]);
     }
 
@@ -119,6 +117,38 @@ class ProductController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+    
+    public function actionAddMaterial($id)
+    {
+        $model = new ProductMaterials();
+        $model->product_id = $id;
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['index']);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('add-material', [
+            'model' => $model,
+        ]);
+    }
+    
+    /**
+     * Deletes an existing ProductMaterials model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param int $id ID
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDeleteMaterial($id)
+    {
+        $this->findModelMaterial($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -139,9 +169,9 @@ class ProductController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
     
-    protected function findModelByUrl($url)
+    protected function findModelMaterial($id)
     {
-        if (($model = Product::findOne(['url' => $url])) !== null) {
+        if (($model = ProductMaterials::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

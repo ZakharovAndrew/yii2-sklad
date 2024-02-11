@@ -1,29 +1,43 @@
 <?php
 
 /**
- * Yii2 Shop
+ * Yii2 Sklad
  * *************
- * Yii2 shop with database module with GUI manager supported.
+ * Yii2 module for maintaining warehouse accounting. Supports adding various products and materials.
  *  
- * @link https://github.com/ZakharovAndrew/yii2-shop/
- * @copyright Copyright (c) 2023 Zakharov Andrew
+ * @link https://github.com/ZakharovAndrew/yii2-sklad/
+ * @copyright Copyright (c) 2024 Zakharov Andrew
  */
  
-namespace ZakharovAndrew\shop;
+namespace ZakharovAndrew\sklad;
 
 use Yii;
 
 /**
- * Yii2 Shop Module 
+ * User module
  */
 class Module extends \yii\base\Module
 {    
-    public $bootstrapVersion = '';
-    public $catalogTitle = 'Catalog Title';
-    public $uploadWebDir = '';
- 
-    public $useTranslite = false;
+    /**
+     * @var string Module version
+     */
+    protected $version = "0.0.8";
+
+    /**
+     * @var string Alias for module
+     */
+    public $alias = "@sklad";
     
+    /**
+     * @var string version Bootstrap
+     */
+    public $bootstrapVersion = '';
+
+     /**
+     * @var string header for product list
+     */
+    public $productListTitle = '';
+        
     /**
      *
      * @var string source language for translation 
@@ -33,7 +47,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'ZakharovAndrew\shop\controllers';
+    public $controllerNamespace = 'ZakharovAndrew\sklad\controllers';
 
     /**
      * {@inheritdoc}
@@ -50,13 +64,13 @@ class Module extends \yii\base\Module
      */
     protected function registerTranslations()
     {
-        Yii::$app->i18n->translations['extension/yii2-shop/*'] = [
+        Yii::$app->i18n->translations['extension/yii2-sklad/*'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => $this->sourceLanguage,
-            'basePath' => '@vendor/zakharov-andrew/yii2-shop/src/messages',
+            'basePath' => '@vendor/zakharov-andrew/yii2-sklad/src/messages',
             'on missingTranslation' => ['app\components\TranslationEventHandler', 'handleMissingTranslation'],
             'fileMap' => [
-                'extension/yii2-shop/shop' => 'shop.php',
+                'extension/yii2-sklad/sklad' => 'sklad.php',
             ],
         ];
     }
@@ -74,8 +88,8 @@ class Module extends \yii\base\Module
      */
     public static function t($message, $params = [], $language = null)
     {
-        $category = 'shop';
-        return Yii::t('extension/yii2-shop/' . $category, $message, $params, $language);
+        $category = 'sklad';
+        return Yii::t('extension/yii2-sklad/' . $category, $message, $params, $language);
     }
     
 }

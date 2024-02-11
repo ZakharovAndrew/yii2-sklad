@@ -2,40 +2,36 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use ZakharovAndrew\shop\models\ProductCategory;
-use ZakharovAndrew\shop\Module;
 
 /** @var yii\web\View $this */
-/** @var app\models\ProductCategory $model */
+/** @var ZakharovAndrew\sklad\models\ProductCategory $model */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Module::t('Catalog'), 'url' => ['/shop/catalog/index']];
-
-// collecting a list of categories
-foreach (ProductCategory::getCategories($model->id) as $category) {
-    // exclude the current category
-    if ($category->id !== $model->id) {
-        $this->params['breadcrumbs'][] = ['label' => $category->title, 'url' => ['/shop/product-category/view', 'url' => $category->url]];
-    }
-}
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Product Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="product-category-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    
-    <div class="category-description"><?= $model->description ?></div>
-    
-    <?= $this->render('../catalog/_product_list', [
-        'products' => $products
-    ]) ?>
-    
-    <div class="category-description_after"><?= $model->description_after ?></div>
-    
-    <?php if (!Yii::$app->user->isGuest) {?>
+
     <p>
-        <?= Html::a(Module::t('Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
     </p>
-    <?php } ?>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'name',
+        ],
+    ]) ?>
+
 </div>

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var yii\web\View $this */
-/** @var app\models\ProductCategorySearch $model */
+/** @var ZakharovAndrew\sklad\models\ProductCategorySearch $model */
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
@@ -17,17 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'title') ?>
-
-    <?= $form->field($model, 'url') ?>
-
-    <?= $form->field($model, 'position') ?>
-
-    <?= $form->field($model, 'parent_id') ?>
-
-    <?php // echo $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'description_after') ?>
+    <?= $form->field($model, 'name') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

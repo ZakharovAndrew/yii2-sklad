@@ -1,12 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use ZakharovAndrew\shop\Module;
+use ZakharovAndrew\sklad\Module;
 
 /** @var yii\web\View $this */
-/** @var app\models\Product $model */
+/** @var ZakharovAndrew\sklad\models\Product $model */
 
-$this->title = Module::t('Create Product');
+$this->title = Module::t('Add product');
 $this->params['breadcrumbs'][] = ['label' => Module::t('Products'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

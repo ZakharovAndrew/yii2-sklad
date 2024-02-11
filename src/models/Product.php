@@ -1,23 +1,18 @@
 <?php
 
-namespace ZakharovAndrew\shop\models;
+namespace ZakharovAndrew\sklad\models;
 
+use ZakharovAndrew\sklad\Module;
+use \yii\helpers\ArrayHelper;
 use Yii;
-use ZakharovAndrew\shop\Module;
 
 /**
  * This is the model class for table "product".
  *
  * @property int $id
- * @property string $title
- * @property string|null $description
- * @property string $url
- * @property string $images
- * @property int|null $category_id
- * @property int|null $user_id
- * @property int|null $count_views
- * @property int|null $cost
- * @property string|null $created_at
+ * @property string|null $name
+ * @property string|null $images
+ * @property string|null $link
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -35,11 +30,9 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'url', 'images'], 'required'],
-            [['description'], 'string'],
-            [['category_id', 'user_id', 'count_views', 'cost'], 'integer'],
-            [['created_at'], 'safe'],
-            [['title', 'url', 'images', 'param1', 'param2', 'param3'], 'string', 'max' => 255],
+            [['images'], 'string'],
+            [['product_category_id', 'good', 'bad'], 'integer'],
+            [['name', 'link', 'comments'], 'string', 'max' => 500],
         ];
     }
 
@@ -50,41 +43,42 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => Module::t('Title'),
-            'description' => Module::t('Description'),
-            'url' => Module::t('Url'),
-            'images' => Module::t('Images'),
-            'category_id' => Module::t('Category'),
-            'user_id' => 'User ID',
-            'count_views' => Module::t('Count Views'),
-            'cost' => Module::t('Cost'),
-            'created_at' => 'Created At',
+            'name' => Module::t('Name'),
+            'images' => Module::t('Links to pictures'),
+            'link' => Module::t('Product link'),
+            'product_category_id' => Module::t('Category'),
+            'good' => Module::t('Good products'),
+            'bad' => Module::t('Bad products'),
+            'comments' => Module::t('Comments'),
+            'materials' => Module::t('Materials'),
         ];
     }
     
+    public static function getList()
+    {
+        $arr = static::find()
+                ->select(['id', 'name'])
+                ->cache(600)
+                ->asArray()
+                ->all();
+        
+        return ArrayHelper::map($arr, 'id', 'name');
+    }
+    
     /**
-     * Получить первую картинку заданного размера
+     * Get the first image of a given size
+     * 
      * @param string $size
      * @return type
      */
     public function getFirstImage($size = 'medium')
     {
-        $module = Yii::$app->getModule('shop');
-        
         if ($this->images == '') {
             return '/img/no-photo.jpg';
         }
         
         $images = explode(',', $this->images);
-        return $module->uploadWebDir . $images[0].'_img_'.$size.'.jpg';
-    }
-    
-    public function getMoreProducts($count = 6)
-    {
-        return self::find()
-                ->where(['category_id' => $this->category_id])
-                ->andWhere(['!=', 'id', $this->id])
-                ->limit($count)
-                ->all();
+        
+        return '/uploaded_files/'. $images[0].'_img_'.$size.'.jpg';
     }
 }
